@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const Card = (article) => {
   // TASK 5
   // ---------------------
@@ -61,7 +63,32 @@ const cardAppender = (selector) => {
   // However, the articles do not come organized in a single, neat array. Inspect the response closely!
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
-  //
+  
+  const selectedElement = document.querySelector(selector);
+  axios.get('https://lambda-times-api.herokuapp.com/articles')
+  .then(request => {
+    // Declaring Arrays
+    const bootstrapArray = request.data.articles.bootstrap;
+    const javascriptArray = request.data.articles.javascript;
+    const jqueryArray = request.data.articles.jquery;
+    const nodeArray = request.data.articles.node;
+    const technologyArray = request.data.articles.technology;
+
+    // Function that convers the given array of articles into a news card
+    const arrayToCard = (array) => {
+      array.forEach(article => {
+        const newCard = Card(article);
+        selectedElement.appendChild(newCard);
+      });
+    }
+
+    arrayToCard(bootstrapArray)
+    arrayToCard(javascriptArray)
+    arrayToCard(jqueryArray)
+    arrayToCard(nodeArray)
+    arrayToCard(technologyArray)    
+  })
+  .catch(error => console.log(error));
 }
 
 export { Card, cardAppender }
