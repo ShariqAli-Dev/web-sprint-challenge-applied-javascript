@@ -1,3 +1,5 @@
+import { defaultResponse } from "msw";
+
 const Header = (title, date, temp) => {
   // TASK 1
   // ---------------------
@@ -11,6 +13,29 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //
+
+  // Creating the markup elements
+  const headerDiv = document.createElement('div');
+  const dateSpan = document.createElement('span');
+  const titleH1 = document.createElement('h1');
+  const tempSpan = document.createElement('span');
+
+  // Adressing classes
+  headerDiv.classList.add('header');
+  dateSpan.classList.add('date');
+  tempSpan.classList.add('temp');
+
+  // Adressing content
+  dateSpan.textContent = date;
+  titleH1.textContent = title;
+  tempSpan.textContent = temp;
+
+  // Adressing heiarchy
+  headerDiv.appendChild(dateSpan);
+  headerDiv.appendChild(titleH1);
+  headerDiv.appendChild(tempSpan);
+
+  return headerDiv;
 }
 
 const headerAppender = (selector) => {
