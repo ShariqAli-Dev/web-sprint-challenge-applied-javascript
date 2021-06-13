@@ -38,6 +38,7 @@ const Header = (title, date, temp) => {
   return headerDiv;
 }
 
+
 const headerAppender = (selector) => {
   // TASK 2
   // ---------------------

@@ -12,8 +12,35 @@ const Tabs = (topics) => {
   //   <div class="tab">bootstrap</div>
   //   <div class="tab">technology</div>
   // </div>
-  //
+  
+  // Deconstructing Array
+  const [javascript, bootstrap, technology] = topics;
+  
+  // Creating Elements
+  const topicsDiv = document.createElement('div');
+  const javascriptDiv = document.createElement('div');
+  const bootstrapDiv = document.createElement('div');
+  const technologyDiv = document.createElement('div');
+  
+  // Adressing Classes
+  topicsDiv.classList.add('topics');
+  javascriptDiv.classList.add('tab');
+  bootstrapDiv.classList.add('tab');
+  technologyDiv.classList.add('tab');
+
+  // Adressing Content
+  javascriptDiv.textContent = javascript;
+  bootstrapDiv.textContent = bootstrap;
+  technologyDiv.textContent = technology;
+
+  // Adressing Heiarchy
+  topicsDiv.appendChild(javascriptDiv);
+  topicsDiv.appendChild(bootstrapDiv);
+  topicsDiv.appendChild(technologyDiv);
+
+  return topicsDiv;
 }
+
 
 const tabsAppender = (selector) => {
   // TASK 4
